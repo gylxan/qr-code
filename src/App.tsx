@@ -1,34 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { ColorModeProvider } from '@/components/color-mode/color-mode-provider.tsx'
+import { ColorModeToggle } from '@/components/color-mode/color-mode-toggle.tsx'
+import { QrCodeCard } from '@/components/qr-code-card.tsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ColorModeProvider defaultColorMode="dark">
+      <header className="top-0 z-10 flex w-full justify-end bg-background px-6 py-2">
+        <ColorModeToggle />
+      </header>
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center overflow-x-hidden p-4">
+        <QrCodeCard />
+      </main>
+    </ColorModeProvider>
   )
 }
 
